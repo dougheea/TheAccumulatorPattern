@@ -9,8 +9,8 @@ Additionally, it emphasizes that you must
 before you can implement a solution to the problem in Python.
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Emily Dougherty.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -68,7 +68,7 @@ def run_test_draw_parallel_lines():
     window2.close_on_mouse_click()
 
 
-def draw_parallel_lines(n, point, length, window):
+def draw_parallel_lines(n, point, length, window1):
     """
     What comes in: The four arguments are:
       -- A positive integer n.
@@ -96,7 +96,7 @@ def draw_parallel_lines(n, point, length, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -109,6 +109,21 @@ def draw_parallel_lines(n, point, length, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+    xs = point.x
+    ys = point.y
+    xe = point.x + length
+    ye = point.y
+
+    for k in range(n):
+        start = rg.Point(xs, ys)
+        end = rg.Point(xe, ye)
+        line = rg.Line(start, end)
+        line.attach_to(window1)
+
+        ys = ys + 30
+        ye = ye + 30
+
+    window1.render()
 
 
 def run_test_draw_lines():
@@ -133,7 +148,7 @@ def run_test_draw_lines():
     window2.close_on_mouse_click()
 
 
-def draw_lines(n, point, window):
+def draw_lines(n, point, window1):
     """
     What comes in: The three arguments are:
       -- A integer n that is at least 2.
@@ -174,6 +189,20 @@ def draw_lines(n, point, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+    xs = point.x
+    ys = point.y
+    xe = point.x + 100
+    ye = point.y + 100
+
+    for k in range(n):
+        start = rg.Point(xs, ys)
+        end = rg.Point(xe, ye)
+        line = rg.Line(start, end)
+        line.attach_to(window1)
+
+        ye = ye - (200/n)
+
+    window1.render()
 
 
 # ----------------------------------------------------------------------
