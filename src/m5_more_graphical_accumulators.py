@@ -136,7 +136,7 @@ def run_test_draw_circles_from_rectangle():
     #   It TESTS the  draw_circles_from_rectangle  function
     #   defined below.  Include at least **   3   ** tests, of which
     #      ***  at least TWO tests are on ONE window and
-    #      ***  at least ONE test is on a DIFFERENT window.
+    #      ***  at least ONE test is on a DIFFERENT .
     #
     ####################################################################
     # HINT: Consider using the same test cases as suggested by the
@@ -145,8 +145,50 @@ def run_test_draw_circles_from_rectangle():
     ####################################################################
     # ------------------------------------------------------------------
 
+    title = 'Tests 1 and 2 of DRAW_CIRCLES_FROMwindow_RECTANGLE: '
+    title = title + ' 8 blue in row, 3 in column; then 4 green in row 5 in ' \
+                    'column '
+    window1 = rg.RoseWindow(720, 500, title)
 
-def draw_circles_from_rectangle(m, n, rectangle, window):
+    # Test 1:
+    corner_1 = rg.Point(400, 250)
+    corner_2 = rg.Point(440, 325)
+    rectangle = rg.Rectangle(corner_1, corner_2)
+    rectangle.fill_color = 'green'
+    rectangle.outline_color = 'black'
+    rectangle.outline_thickness = 5
+    draw_circles_from_rectangle(4, 5, rectangle, window1)
+
+    # Test 2:
+    corner_1 = rg.Point(600, 400)
+    corner_2 = rg.Point(500, 450)
+    rectangle = rg.Rectangle(corner_1, corner_2)
+    rectangle.fill_color = 'blue'
+    rectangle.outline_color = 'red'
+    rectangle.outline_thickness = 3
+    draw_circles_from_rectangle(8, 3, rectangle, window1)
+    window1.close_on_mouse_click()
+
+    # ------------------------------------------------------------------
+    # A third test on ANOTHER window.
+    # ------------------------------------------------------------------
+    title = 'Test 3 of DRAW_CIRCLES_FROM_RECTANGLE: '
+    title += ' 6 yellow-filled row, 10 brown outlined column'
+    window2 = rg.RoseWindow(620, 380, title)
+
+    # Test 3:
+    corner_1 = rg.Point(375, 330)
+    corner_2 = rg.Point(350, 280)
+    rectangle = rg.Rectangle(corner_1, corner_2)
+    rectangle.fill_color = 'yellow'
+    rectangle.outline_color = 'brown'
+    rectangle.outline_thickness = 5
+    draw_circles_from_rectangle(6, 10, rectangle, window1)
+
+    window2.close_on_mouse_click()
+
+
+def draw_circles_from_rectangle(m, n, rectangle, window1):
     """
     What comes in:  Four arguments:
       -- Positive integers m and n.
@@ -199,6 +241,23 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+    xl = rectangle.corner_1.x
+    yl = rectangle.corner_1.y
+    xr = rectangle.corner_2.x
+    yr = rectangle.corner_2.y
+    xc = rectangle.get_center().x
+    yc = rectangle.get_center().y
+
+    for k in range(m):
+        radius = (yl - yr)/2
+        centery = yc
+        centerx = xc - 2*radius
+        center = (centerx, centery)
+        circle = rg.Circle(center, radius)
+        circle.attach_to(window1)
+        window1.render()
+
+
 
 
 def run_test_draw_lines_from_rectangles():
