@@ -363,10 +363,7 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
 
     rectangle1.attach_to(window)
     rectangle2.attach_to(window)
-    upper_left = rectangle1.get_upper_left_corner()
     lower_right = rectangle1.get_lower_right_corner()
-    upper_left2 = rectangle1.get_upper_left_corner()
-    lower_right2 = rectangle1.get_lower_right_corner()
     rectangle1_center = (rectangle1.get_center())
     rectangle2_center = (rectangle2.get_center())
     start = rg.Point(rectangle1_center.x, rectangle1_center.y)
